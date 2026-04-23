@@ -45,7 +45,6 @@ export const Contact = () => {
 const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
 
-  // remove qualquer caractere inválido (garante mobile-safe)
   const cleanNumber = WHATS_NUMBER.replace(/\D/g, "");
 
   const text = `Olá, Açaí Ki-Delícia! 🍇
@@ -58,8 +57,10 @@ ${form.message || "(sem mensagem)"}`;
 
   const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`;
 
-  // mobile-safe redirect (resolve o erro no celular)
-  window.location.href = url;
+  // 🔴 delay mínimo resolve bug de mobile (isso é o ponto-chave)
+  setTimeout(() => {
+    window.location.assign(url);
+  }, 50);
 };
 
   return (
