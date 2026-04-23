@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MapPin, Phone, Clock, MessageCircle, Send } from "lucide-react";
 
-const WHATS_NUMBER = "89994000014";
+const WHATS_NUMBER = "5589994000014";
 const WHATS_DEFAULT_MSG =
   "Olá! Vi o site e gostaria de mais informações.";
 
