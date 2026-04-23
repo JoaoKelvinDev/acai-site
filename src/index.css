@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Açaí Ki-Delícia PL — Design System
+   Identidade Visual Oficial: Roxo Vibrante #8A2BE2, Verde Limão #32CD32
+   Todas as cores em HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base creme */
+    --background: 38 40% 96%;
+    --foreground: 270 35% 12%;
+
+    --card: 38 50% 98%;
+    --card-foreground: 270 35% 12%;
+
+    --popover: 38 50% 98%;
+    --popover-foreground: 270 35% 12%;
+
+    /* Roxo Vibrante #8A2BE2 */
+    --primary: 271 76% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 271 76% 63%;
+
+    /* Creme suave */
+    --secondary: 35 45% 90%;
+    --secondary-foreground: 275 55% 22%;
+
+    --muted: 35 30% 92%;
+    --muted-foreground: 270 15% 38%;
+
+    /* Verde Limão #32CD32 */
+    --accent: 120 61% 50%;
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 120 61% 90%;
+
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 38 50% 96%;
+
+    --border: 35 25% 85%;
+    --input: 35 25% 88%;
+    --ring: 275 55% 22%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-acai: linear-gradient(135deg, hsl(271 76% 43%) 0%, hsl(271 76% 53%) 50%, hsl(271 76% 63%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(120 61% 45%), hsl(120 61% 55%));
+    --gradient-cream: linear-gradient(180deg, hsl(38 40% 96%), hsl(35 45% 90%));
+    --gradient-hero-overlay: linear-gradient(135deg, hsl(271 76% 28% / 0.92) 0%, hsl(271 76% 43% / 0.78) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 8px 30px -10px hsl(271 76% 53% / 0.18);
+    --shadow-elegant: 0 20px 60px -20px hsl(271 76% 28% / 0.35);
+    --shadow-gold: 0 10px 40px -10px hsl(120 61% 50% / 0.4);
+
+    /* Transitions */
+    --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 275 30% 8%;
+    --foreground: 38 40% 96%;
+    --card: 275 30% 10%;
+    --card-foreground: 38 40% 96%;
+    --popover: 275 30% 10%;
+    --popover-foreground: 38 40% 96%;
+    --primary: 38 50% 96%;
+    --primary-foreground: 275 55% 22%;
+    --secondary: 275 25% 18%;
+    --secondary-foreground: 38 40% 96%;
+    --muted: 275 20% 18%;
+    --muted-foreground: 35 20% 70%;
+    --accent: 40 75% 55%;
+    --accent-foreground: 275 55% 18%;
+    --border: 275 20% 20%;
+    --input: 275 20% 20%;
+    --ring: 40 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-acai {
+    background: var(--gradient-acai);
+  }
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+  .bg-gradient-cream {
+    background: var(--gradient-cream);
+  }
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s var(--transition-smooth), transform 0.9s var(--transition-smooth);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-logo {
+    opacity: 0;
+    transform: translateY(20px) scale(0.92) rotate(-6deg);
+    transition: opacity 1s var(--transition-smooth), transform 1.1s var(--transition-smooth);
+    will-change: transform, opacity;
+  }
+  .reveal-logo.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
