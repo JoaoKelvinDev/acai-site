@@ -42,12 +42,13 @@ export const Contact = () => {
     WHATS_DEFAULT_MSG
   )}`;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
 
-    const cleanPhone = form.phone.replace(/\D/g, "");
+  // remove qualquer caractere inválido (garante mobile-safe)
+  const cleanNumber = WHATS_NUMBER.replace(/\D/g, "");
 
-    const text = `Olá, Açaí Ki-Delícia! 🍇
+  const text = `Olá, Açaí Ki-Delícia! 🍇
 
 *Nome:* ${form.name || "(não informado)"}
 *Telefone:* ${form.phone || "(não informado)"}
@@ -55,9 +56,11 @@ export const Contact = () => {
 
 ${form.message || "(sem mensagem)"}`;
 
-    const url = `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
+  const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`;
+
+  // mobile-safe redirect (resolve o erro no celular)
+  window.location.href = url;
+};
 
   return (
     <section
