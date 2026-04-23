@@ -106,16 +106,18 @@ export const Hero = () => {
         </div>
 
         {/* Logo */}
-        <div className="hidden lg:flex lg:col-span-5 justify-end animate-fade-in">
-          <div className="relative reveal-logo">
-            <div className="absolute -inset-10 bg-gradient-gold opacity-30 blur-3xl rounded-full animate-pulse" />
-            <div className="relative w-80 h-80 grid place-items-center animate-float">
-              <img
-                src={logo}
-                alt="Logomarca Açaí Ki-Delícia"
-                className="w-full h-full object-contain drop-shadow-2xl"
-              />
-            </div>
+        <div className="flex flex-col items-center lg:grid lg:col-span-5 lg:justify-end animate-fade-in mt-10 lg:mt-0">
+      <div className="relative reveal-logo">
+    {/* Efeito de brilho ao fundo - Ajustado o tamanho para mobile (w-64) e desktop (lg:w-80) */}
+    <div className="absolute -inset-10 bg-gradient-gold opacity-30 blur-3xl rounded-full animate-pulse" />
+    
+    <div className="relative w-64 h-64 lg:w-80 lg:h-80 grid place-items-center animate-float">
+      <img
+        src={logo}
+        alt="Logomarca Açaí Ki-Delícia"
+        className="w-full h-full object-contain drop-shadow-2xl"
+      />
+    </div>    
 
             <div className="absolute -bottom-2 -left-6 bg-card text-card-foreground px-5 py-3 rounded-full shadow-elegant">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">

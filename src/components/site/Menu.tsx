@@ -91,9 +91,10 @@ export const MenuSection = () => {
                     {item.desc}
                   </p>
                 </div>
-                <span className="shrink-0 px-3 py-1.5 rounded-full bg-accent-soft text-accent-foreground font-bold text-sm whitespace-nowrap">
-                  {item.price}
-                </span>
+                {/* Substitua o span antigo por este: */}
+    <span className="shrink-0 px-4 py-1.5 rounded-full bg-green-600 text-white font-bold text-sm whitespace-nowrap shadow-sm">
+  {item.price}
+  </span>
               </div>
               <div className="absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </article>
