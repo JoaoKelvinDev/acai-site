@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type Item = { name: string; desc: string; price: string };
+type Item = { name: string; price: string };
 type Category = { id: string; label: string; items: Item[] };
 
 const categories: Category[] = [
@@ -8,31 +8,31 @@ const categories: Category[] = [
     id: "principal",
     label: "Cardápio",
     items: [
-      { name: "Açaí (kg)", desc: "Açaí cremoso, fresquinho, pesado na hora. Você escolhe quanto quer levar.", price: "R$ 70,00 / kg" },
-      { name: "Sorvete (kg)", desc: "Diversos sabores cremosos, também vendidos por peso.", price: "R$ 60,00 / kg" },
-      { name: "Cremes (kg)", desc: "Cremes artesanais — ninho, morango, chocolate e outros sabores da casa.", price: "Sob consulta" },
+      { name: "Açaí (kg)", price: "R$ 70,00 / kg" },
+      { name: "Sorvete (kg)", price: "R$ 60,00 / kg" },
+      { name: "Cremes (kg)", price: "Sob consulta" },
     ],
   },
   {
     id: "complementos",
     label: "Complementos",
     items: [
-      { name: "Granola crocante", desc: "Aveia, mel e castanhas torradas.", price: "Sob consulta" },
-      { name: "Leite condensado", desc: "Aquele fio doce que faz toda diferença.", price: "Sob consulta" },
-      { name: "Banana & Morango", desc: "Frutas fresquinhas em fatias generosas.", price: "Sob consulta" },
-      { name: "Paçoca esfarelada", desc: "Sabor de roça que combina demais.", price: "Sob consulta" },
-      { name: "Leite Ninho em pó", desc: "Cremosidade e sabor de infância.", price: "Sob consulta" },
-      { name: "Chocolate ao leite", desc: "Calda quentinha por cima do açaí gelado.", price: "Sob consulta" },
+      { name: "Granola crocante", price: "Sob consulta" },
+      { name: "Leite condensado", price: "Sob consulta" },
+      { name: "Banana  Morango", price: "Sob consulta" },
+      { name: "Paçoca esfarelada", price: "Sob consulta" },
+      { name: "Leite Ninho em pó", price: "Sob consulta" },
+      { name: "Chocolate ao leite", price: "Sob consulta" },
     ],
   },
   {
     id: "bebidas",
     label: "Bebidas & Extras",
     items: [
-      { name: "Vitamina de açaí", desc: "Açaí batido com leite e banana.", price: "Sob consulta" },
-      { name: "Suco natural", desc: "Frutas da estação — pergunte ao atendente.", price: "Sob consulta" },
-      { name: "Água mineral 500ml", desc: "Geladinha.", price: "Sob consulta" },
-      { name: "Refrigerante lata", desc: "Coca, Guaraná ou Fanta.", price: "Sob consulta" },
+      { name: "Vitamina de açaí", price: "Sob consulta" },
+      { name: "Suco natural", price: "Sob consulta" },
+      { name: "Água mineral 500ml", price: "Sob consulta" },
+      { name: "Refrigerante lata", price: "Sob consulta" },
     ],
   },
 ];
@@ -75,30 +75,28 @@ export const MenuSection = () => {
         </div>
 
         {/* Items */}
-        <div className="reveal mt-10 grid sm:grid-cols-2 gap-4">
-          {current.items.map((item, i) => (
-            <article
-              key={item.name}
-              className="group relative bg-card rounded-2xl p-6 border border-border hover:border-accent/60 hover:shadow-elegant transition-all"
-              style={{ animationDelay: `${i * 60}ms` }}
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-display font-bold text-xl text-primary">
-                    {item.name}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-                <span className="shrink-0 px-3 py-1.5 rounded-full bg-accent-soft text-accent-foreground font-bold text-sm whitespace-nowrap">
-                  {item.price}
-                </span>
-              </div>
-              <div className="absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            </article>
-          ))}
+<div className="reveal mt-10 grid sm:grid-cols-2 gap-4">
+  {current.items.map((item, i) => (
+    <article
+      key={item.name}
+      className="group relative bg-card rounded-2xl p-6 border border-border hover:border-accent/60 hover:shadow-elegant transition-all"
+      style={{ animationDelay: `${i * 60}ms` }}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="font-display font-bold text-xl text-primary">
+            {item.name}
+          </h3>
         </div>
+        {/* MUDANÇA AQUI: Texto do preço em Roxo e maior */}
+        <span className="shrink-0 px-2 py-0.5 rounded-full border border-accent/40 text-accent font-semibold text-xs sm:text-sm whitespace-nowrap bg-accent/5">
+  {item.price}
+</span>
+      </div>
+      <div className="absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+    </article>
+  ))}
+</div>
 
         <p className="reveal mt-10 text-xs text-muted-foreground text-center">
           * Preços sujeitos a pequenas alterações. Confirme pelo WhatsApp.

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Send, Plus, Minus, Truck, Store } from "lucide-react";
 
-const WHATS_NUMBER = "5589974001661";
+const WHATS_NUMBER = "5589994000014";
 
 const SIZES = [
   { id: "300", label: "Copo 300ml" },
@@ -103,6 +103,10 @@ export const OrderBuilder = () => {
   const [adicionais, setAdicionais] = useState<string[]>([]);
   const [qty, setQty] = useState(1);
   const [obs, setObs] = useState("");
+  
+  // Novos estados para Pagamento
+  const [payment, setPayment] = useState<string>("Pix");
+  const [change, setChange] = useState("");
 
   const toggle = (
     list: string[],
@@ -125,26 +129,33 @@ export const OrderBuilder = () => {
 
   const buildMessage = () => {
     const lines: string[] = [];
-    lines.push("🍇 *Novo pedido — Açaí Ki-Delícia PL*", "");
-    lines.push(`👤 *Nome:* ${name || "(não informado)"}`);
-    lines.push(`📱 *Telefone:* ${phone || "(não informado)"}`);
+    lines.push("\u{2705}  *Novo pedido - Açaí Ki-Delícia PL*", "");
+    lines.push(`\u{1F464} *Nome:* ${name || "(não informado)"}`);
+    lines.push(`\u{1F4F1} *Telefone:* ${phone || "(não informado)"}`);
     lines.push(
-      `🛵 *Modalidade:* ${mode === "delivery" ? "Delivery" : "Retirar na loja"}`
+      `\u{1F6F5} *Modalidade:* ${mode === "delivery" ? "Delivery" : "Retirar na loja"}`
     );
     if (mode === "delivery") {
-      lines.push(`🏠 *Endereço:* ${address || "(não informado)"}`);
-      if (reference) lines.push(`🧭 *Ponto de referência:* ${reference}`);
+      lines.push(`\u{1F3E0} *Endereço:* ${address || "(não informado)"}`);
+      if (reference) lines.push(`\u{1F4CD} *Ponto de referência:* ${reference}`);
     }
-    lines.push("", "──────────────", "*🧾 Pedido*");
+    
+    lines.push("", "------------------------------", "*\u{1F4D1} Pedido*");
     lines.push(`• Quantidade: ${qty}x`);
     lines.push(`• Tamanho: ${sizeLabel}`);
     lines.push(`• Base: ${base}`);
     if (cremes.length) lines.push(`• Cremes: ${cremes.join(", ")}`);
     if (sorvetes.length) lines.push(`• Sorvetes: ${sorvetes.join(", ")}`);
-    if (adicionais.length)
-      lines.push(`• Adicionais: ${adicionais.join(", ")}`);
-    if (obs) lines.push("", `📝 *Observações:* ${obs}`);
-    lines.push("", "Obrigado! 💜");
+    if (adicionais.length) lines.push(`• Adicionais: ${adicionais.join(", ")}`);
+    
+    // Parte do Pagamento na Mensagem
+    lines.push("", `\u{1F4B3} *Pagamento:* ${payment}`);
+    if (payment === "Dinheiro" && change) {
+      lines.push(`\u{1F4B5} *Troco para:* ${change}`);
+    }
+
+    if (obs) lines.push("", `\u{1F4DD} *Observações:* ${obs}`);
+    lines.push("", "Obrigado! \u{1F49C}");    
     return lines.join("\n");
   };
 
@@ -268,30 +279,21 @@ export const OrderBuilder = () => {
 
       <div className="my-6 h-px bg-border" />
 
-      {/* Tamanho */}
+      {/* Tamanho, Base, Cremes, Sorvetes e Adicionais (Mantidos igual) */}
       <div>
-        <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Tamanho
-        </label>
+        <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Tamanho</label>
         <div className="mt-2 flex flex-wrap gap-2">
           {SIZES.map((s) => (
-            <Chip key={s.id} active={size === s.id} onClick={() => setSize(s.id)}>
-              {s.label}
-            </Chip>
+            <Chip key={s.id} active={size === s.id} onClick={() => setSize(s.id)}>{s.label}</Chip>
           ))}
         </div>
       </div>
 
-      {/* Base */}
       <div className="mt-5">
-        <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Base
-        </label>
+        <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Base</label>
         <div className="mt-2 flex flex-wrap gap-2">
           {BASES.map((b) => (
-            <Chip key={b} active={base === b} onClick={() => setBase(b)}>
-              {b}
-            </Chip>
+            <Chip key={b} active={base === b} onClick={() => setBase(b)}>{b}</Chip>
           ))}
         </div>
       </div>
@@ -299,22 +301,12 @@ export const OrderBuilder = () => {
       {/* Cremes */}
       <div className="mt-5">
         <div className="flex items-baseline justify-between">
-          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            Cremes
-          </label>
-          <span className="text-[10px] text-muted-foreground">
-            até 2 · {cremes.length}/2
-          </span>
+          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Cremes</label>
+          <span className="text-[10px] text-muted-foreground">até 2 · {cremes.length}/2</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {CREMES.map((c) => (
-            <Chip
-              key={c}
-              active={cremes.includes(c)}
-              onClick={() => toggle(cremes, setCremes, c, 2)}
-            >
-              {c}
-            </Chip>
+            <Chip key={c} active={cremes.includes(c)} onClick={() => toggle(cremes, setCremes, c, 2)}>{c}</Chip>
           ))}
         </div>
       </div>
@@ -322,22 +314,12 @@ export const OrderBuilder = () => {
       {/* Sorvetes */}
       <div className="mt-5">
         <div className="flex items-baseline justify-between">
-          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            Sorvetes
-          </label>
-          <span className="text-[10px] text-muted-foreground">
-            até 3 · {sorvetes.length}/3
-          </span>
+          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Sorvetes</label>
+          <span className="text-[10px] text-muted-foreground">até 3 · {sorvetes.length}/3</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {SORVETES.map((s) => (
-            <Chip
-              key={s}
-              active={sorvetes.includes(s)}
-              onClick={() => toggle(sorvetes, setSorvetes, s, 3)}
-            >
-              {s}
-            </Chip>
+            <Chip key={s} active={sorvetes.includes(s)} onClick={() => toggle(sorvetes, setSorvetes, s, 3)}>{s}</Chip>
           ))}
         </div>
       </div>
@@ -345,65 +327,51 @@ export const OrderBuilder = () => {
       {/* Adicionais */}
       <div className="mt-5">
         <div className="flex items-baseline justify-between">
-          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            Adicionais
-          </label>
-          <span className="text-[10px] text-muted-foreground">
-            {adicionais.length} selecionado(s)
-          </span>
+          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Adicionais</label>
+          <span className="text-[10px] text-muted-foreground">{adicionais.length} selecionado(s)</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {ADICIONAIS.map((a) => (
-            <Chip
-              key={a}
-              active={adicionais.includes(a)}
-              onClick={() => toggle(adicionais, setAdicionais, a)}
-            >
-              {a}
+            <Chip key={a} active={adicionais.includes(a)} onClick={() => toggle(adicionais, setAdicionais, a)}>{a}</Chip>
+          ))}
+        </div>
+      </div>
+
+      {/* Pagamento (NOVO) */}
+      <div className="mt-6">
+        <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Forma de Pagamento
+        </label>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {["Pix", "Cartão", "Dinheiro"].map((m) => (
+            <Chip key={m} active={payment === m} onClick={() => setPayment(m)}>
+              {m}
             </Chip>
           ))}
         </div>
+        {payment === "Dinheiro" && (
+          <input
+            type="text"
+            value={change}
+            onChange={(e) => setChange(e.target.value)}
+            placeholder="Troco para quanto?"
+            className="mt-3 w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 transition"
+          />
+        )}
       </div>
 
       {/* Quantidade + Observação */}
       <div className="mt-6 grid sm:grid-cols-[160px_1fr] gap-4 items-end">
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            Quantidade
-          </label>
+          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Quantidade</label>
           <div className="mt-1.5 flex items-center bg-secondary border border-border rounded-xl overflow-hidden">
-            <button
-              type="button"
-              onClick={() => setQty(Math.max(1, qty - 1))}
-              className="px-3 py-3 hover:bg-muted transition-colors"
-              aria-label="Diminuir quantidade"
-            >
-              <Minus size={16} />
-            </button>
-            <input
-              type="number"
-              min={1}
-              max={20}
-              value={qty}
-              onChange={(e) =>
-                setQty(Math.min(20, Math.max(1, Number(e.target.value) || 1)))
-              }
-              className="flex-1 text-center bg-transparent py-3 focus:outline-none font-semibold"
-            />
-            <button
-              type="button"
-              onClick={() => setQty(Math.min(20, qty + 1))}
-              className="px-3 py-3 hover:bg-muted transition-colors"
-              aria-label="Aumentar quantidade"
-            >
-              <Plus size={16} />
-            </button>
+            <button type="button" onClick={() => setQty(Math.max(1, qty - 1))} className="px-3 py-3 hover:bg-muted"><Minus size={16} /></button>
+            <input type="number" value={qty} readOnly className="flex-1 text-center bg-transparent py-3 focus:outline-none font-semibold" />
+            <button type="button" onClick={() => setQty(Math.min(20, qty + 1))} className="px-3 py-3 hover:bg-muted"><Plus size={16} /></button>
           </div>
         </div>
         <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            Observações (opcional)
-          </label>
+          <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Observações (opcional)</label>
           <input
             maxLength={250}
             value={obs}
@@ -421,9 +389,6 @@ export const OrderBuilder = () => {
         <Send size={18} />
         Enviar pedido pelo WhatsApp
       </button>
-      <p className="mt-3 text-[11px] text-muted-foreground text-center">
-        Você confirma o pedido conosco pelo WhatsApp antes do preparo.
-      </p>
     </form>
   );
 };

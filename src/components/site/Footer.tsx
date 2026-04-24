@@ -2,10 +2,11 @@ import { Instagram, MapPin, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo-acai-ki-delicia.png";
 
 const INSTAGRAM_URL = "https://www.instagram.com/acaikideliciapl/";
+const WHATS_DEFAULT_MSG = "Olá! Vi o site e gostaria de mais informações.";
 const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=" +
+  "https://www.google.com/maps/place/AÇAÍ+KI-DELÍCIA+PL/@-7.7838905,-42.2529178,15z/data=!4m6!3m5!1s0x79d5d961f62d657:0x5f47a47c990b3e6b!8m2!3d-7.7794658!4d-42.2498863!16s%2Fg%2F11z1xz06zt?entry=ttu&g_ep=EgoyMDI2MDQyMS4wIKXMDSoASAFQAw%3D%3D" +
   encodeURIComponent("Açaí Ki-Delícia PL, Rua Licinha Moraes, 20, Paes Landim, PI, 64710-000");
-const WHATS_URL = "https://wa.me/5589974001661";
+const WHATS_URL = `https://wa.me/5589974001661?text=${encodeURIComponent(WHATS_DEFAULT_MSG)}`;
 
 export const Footer = () => {
   return (

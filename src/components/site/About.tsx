@@ -14,14 +14,8 @@ export const About = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-6 -right-6 bg-card px-6 py-5 rounded-2xl shadow-elegant border border-border max-w-[220px]">
-            <div className="font-display text-3xl font-bold text-primary">+5 anos</div>
-            <div className="text-sm text-muted-foreground mt-1">
-              servindo açaí com carinho em Paes Landim.
-            </div>
-          </div>
         </div>
-
+        
         <div className="reveal">
           <span className="text-xs tracking-[0.3em] uppercase text-accent font-semibold">
             Sobre nós
@@ -33,39 +27,48 @@ export const About = () => {
           <div className="mt-6 space-y-4 text-foreground/80 leading-relaxed">
             <p>
               A <strong>Açaí Ki-Delícia PL</strong> nasceu do sonho simples de
-              oferecer um açaí de verdade — cremoso, gelado e do jeitinho que
-              cada cliente gosta — bem aqui em Paes Landim. Começamos pequeno,
+              oferecer um açaí de verdade  cremoso, gelado e do jeitinho que
+              cada cliente gosta  bem aqui em Paes Landim. Começamos pequeno,
               atendendo amigos e vizinhos, e fomos crescendo pelo boca a boca de
-              quem provou e voltou.
+              quem provou, gostou e voltou.
             </p>
             <p>
               Atendemos cada pedido como se fosse pra alguém da família. Aqui
-              você não é "o próximo da fila" — você é o <em>fulano que gosta de
+              você não é "o próximo da fila"  você é o <em>fulano que gosta de
               leite condensado a mais</em>, a <em>menina que pede paçoca todo
               sábado</em>. É essa proximidade que faz da nossa casa um pedacinho
               da cidade.
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-3 gap-4">
-            {[
-              { v: "100%", l: "Açaí fresco" },
-              { v: "+20", l: "Complementos" },
-              { v: "23h", l: "Todo dia" },
-            ].map((s) => (
-              <div
-                key={s.l}
-                className="text-center p-4 rounded-2xl bg-secondary border border-border"
-              >
-                <div className="font-display text-2xl sm:text-3xl font-bold text-primary">
-                  {s.v}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground mt-1">
-                  {s.l}
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Cards Quadradinhos - Fontes Maiores */}
+<div className="mt-8 grid grid-cols-3 gap-2 sm:gap-6"> 
+  {[
+    { v: "100%", l: "Açaí fresco" },
+    { v: "+20", l: "Opções" }, // Troquei "Complementos" por "Opções" ou ajuste o texto abaixo
+    { v: "Aberto", l: "Horários" },
+  ].map((s) => (
+    <div
+      key={s.l}
+      className="flex flex-col items-center justify-center text-center p-1 sm:p-5 rounded-2xl sm:rounded-3xl bg-secondary border border-border aspect-square shadow-sm transition-transform hover:scale-105 overflow-hidden"
+    >
+      <div className="font-display text-xl sm:text-5xl lg:text-6xl font-extrabold text-primary italic leading-none">
+        {s.v}
+      </div>
+      
+      <div className="text-[9px] sm:text-sm text-muted-foreground mt-1 sm:mt-3 font-bold uppercase tracking-tighter sm:tracking-normal leading-tight w-full px-1">
+        {s.v === "Aberto" ? (
+          <span className="text-[8px] sm:text-xs normal-case font-medium block">
+            Seg-Sáb 14-23h <br /> Dom 15-23h
+          </span>
+        ) : (
+          /* Se quiser manter 'Complementos', usamos tracking-tighter para não colar na borda */
+          s.v === "+20" ? "Complemento" : s.l
+        )}
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </div>
     </section>

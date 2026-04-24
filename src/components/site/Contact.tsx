@@ -1,11 +1,12 @@
 import { MapPin, Phone, Clock, MessageCircle, Instagram } from "lucide-react";
 import { OrderBuilder } from "./OrderBuilder";
+import {  Star } from "lucide-react"; // Adicione o Star aqui
 
 const WHATS_NUMBER = "5589974001661";
 const WHATS_DEFAULT_MSG = "Olá! Vi o site e gostaria de mais informações.";
 const INSTAGRAM_URL = "https://www.instagram.com/acaikideliciapl/";
 const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=" +
+  "https://www.google.com/maps/place/AÇAÍ+KI-DELÍCIA+PL/@-7.7838905,-42.2529178,15z/data=!4m6!3m5!1s0x79d5d961f62d657:0x5f47a47c990b3e6b!8m2!3d-7.7794658!4d-42.2498863!16s%2Fg%2F11z1xz06zt?entry=ttu&g_ep=EgoyMDI2MDQyMS4wIKXMDSoASAFQAw%3D%3D" +
   encodeURIComponent(
     "Açaí Ki-Delícia PL, Rua Licinha Moraes, 20, Paes Landim, PI, 64710-000"
   );
@@ -136,6 +137,7 @@ export const Contact = () => {
               <Instagram size={20} />
               Instagram
             </a>
+            
             <a
               href={MAPS_URL}
               target="_blank"

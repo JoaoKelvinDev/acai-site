@@ -1,8 +1,39 @@
+import { useState, useEffect } from "react";
 import heroImg from "@/assets/hero-acai.jpg";
 import logo from "@/assets/logo-acai-ki-delicia.png";
 import { Clock, ArrowRight, MessageCircle } from "lucide-react";
 
 export const Hero = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    const checkStatus = () => {
+      const now = new Date();
+      const day = now.getDay();
+      const hour = now.getHours();
+
+      // day: 0 = domingo, 1 = segunda, ..., 6 = sábado
+      const isSunday = day === 0;
+      const isWeekday = day >= 1 && day <= 6;
+
+      let open = false;
+
+      if (isWeekday) {
+        // Segunda a sábado: 14h às 23h
+        open = hour >= 14 && hour < 23;
+      } else if (isSunday) {
+        // Domingo: 15h às 23h
+        open = hour >= 15 && hour < 23;
+      }
+
+      setIsOpen(open);
+    };
+
+    checkStatus();
+    const interval = setInterval(checkStatus, 60000); // Atualiza a cada minuto
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <section
       id="inicio"
@@ -28,20 +59,19 @@ export const Hero = () => {
       <div className="container relative z-10 grid lg:grid-cols-12 gap-10 items-center py-16">
         <div className="lg:col-span-7 text-primary-foreground animate-fade-in">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 backdrop-blur-sm text-xs tracking-[0.25em] uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            Aberto agora · Paes Landim, PI
+            <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${isOpen ? "bg-accent" : "bg-red-500"}`} />
+            {isOpen ? "Aberto agora" : "Fechado"} · Paes Landim, PI
           </span>
 
           <h1 className="mt-6 font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[1.05]">
-            Explosão de <em className="text-gradient-gold not-italic">sabor</em>
+            Explosão de um <em className="text-gradient-gold not-italic">sabor</em>
             <br /> em cada{" "}
             <span className="italic font-medium">copo</span>.
           </h1>
 
           <p className="mt-6 max-w-xl text-base sm:text-lg text-primary-foreground/85 leading-relaxed">
-            Açaí, cremes, sorvetes e acompanhamentos vendidos por quilo —
-            cremosos, geladinhos e do seu jeito. Todos os dias, das 14h às
-            23h, na Rua Licinha Moraes, 20.
+            Açaí, cremes, sorvetes e acompanhamentos vendidos por quilo
+            cremosos, geladinhos e do seu jeito. Segunda a sábado das 14h às 23h, domingos das 15h às 23h.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -67,35 +97,31 @@ export const Hero = () => {
           <div className="mt-10 inline-flex items-center gap-3 text-sm text-primary-foreground/80">
             <Clock size={18} className="text-accent" />
             <span>
-              Todos os dias ·{" "}
-              <strong className="text-primary-foreground">14h às 23h</strong>
+              Seg-Sáb:{" "}
+              <strong className="text-primary-foreground">14h-23h</strong> · Dom:{" "}
+              <strong className="text-primary-foreground">15h-23h</strong>
             </span>
           </div>
         </div>
 
-        {/* Logo showcase */}
-        <div className="hidden lg:flex lg:col-span-5 justify-end animate-fade-in">
-          <div className="relative reveal-logo">
-            <div className="absolute -inset-10 bg-gradient-gold opacity-30 blur-3xl rounded-full animate-pulse" />
-            <div className="relative w-80 h-80 grid place-items-center animate-float">
-              <img
-                src={logo}
-                alt="Logomarca Açaí Ki-Delícia"
-                width={640}
-                height={640}
-                className="w-full h-full object-contain drop-shadow-2xl"
-              />
-            </div>
-            <div className="absolute -bottom-2 -left-6 bg-card text-card-foreground px-5 py-3 rounded-full shadow-elegant">
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                Por kg
-              </div>
-              <div className="font-display font-bold text-2xl text-primary">
-                R$ 70,00
-              </div>
-            </div>
-          </div>
-        </div>
+{/* Logo e Preço */}
+{/* Removemos o 'hidden' e trocamos 'lg:col-span-5' por uma estrutura que funcione em todos os tamanhos */}
+<div className="flex flex-col items-center lg:grid lg:col-span-5 lg:justify-end animate-fade-in mt-10 lg:mt-0">
+  <div className="relative reveal-logo">
+    {/* Efeito de brilho ao fundo - Ajustado o tamanho para mobile (w-64) e desktop (lg:w-80) */}
+    <div className="absolute -inset-10 bg-gradient-gold opacity-30 blur-3xl rounded-full animate-pulse" />
+    
+    <div className="relative w-64 h-64 lg:w-80 lg:h-80 grid place-items-center animate-float">
+      <img
+        src={logo}
+        alt="Logomarca Açaí Ki-Delícia"
+        className="w-full h-full object-contain drop-shadow-2xl"
+      />
+    </div>
+
+    {/* Badge de Preço - Posicionamento ajustado para não cortar no mobile */}
+  </div>
+</div>
       </div>
 
       {/* Bottom curve */}

@@ -13,13 +13,13 @@ const items = [
   },
   {
     icon: Clock,
-    title: "Das 14h às 23h",
+    title: "Seg-Sáb: 14h-23h · Dom: 15h-23h",
     text: "Aberto todos os dias para matar a vontade.",
   },
   {
     icon: MapPin,
     title: "Rua Licinha Moraes, 20",
-    text: "Em Paes Landim/PI — pertinho de você.",
+    text: "Em Paes Landim/PI  pertinho de você.",
   },
 ];
 
