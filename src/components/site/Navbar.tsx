@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram } from "lucide-react";
 import logo from "@/assets/logo-acai-ki-delicia.png";
+
+const INSTAGRAM_URL = "https://www.instagram.com/acaikideliciapl/";
 
 const links = [
   { href: "#inicio", label: "Início" },
@@ -57,12 +59,23 @@ export const Navbar = () => {
           ))}
         </ul>
 
-        <a
-          href="#contato"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary-glow transition-colors shadow-soft"
-        >
-          Peça já
-        </a>
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="w-10 h-10 grid place-items-center rounded-full text-primary hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            <Instagram size={20} />
+          </a>
+          <a
+            href="#contato"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary-glow transition-colors shadow-soft"
+          >
+            Peça já
+          </a>
+        </div>
 
         <button
           aria-label="Abrir menu"
@@ -93,6 +106,16 @@ export const Navbar = () => {
               className="mt-2 inline-flex justify-center items-center px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold"
             >
               Peça já
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-full border border-border text-foreground font-semibold"
+            >
+              <Instagram size={18} />
+              Instagram
             </a>
           </ul>
         </div>

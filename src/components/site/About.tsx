@@ -1,4 +1,4 @@
-import berries from "@/assets/acai-berries.jpg";
+import lojaFachadaDia from "@/assets/loja-fachada-dia.jpg";
 
 export const About = () => {
   return (
@@ -8,14 +8,18 @@ export const About = () => {
           <div className="absolute -inset-4 bg-gradient-gold opacity-20 blur-2xl rounded-3xl" />
           <div className="relative rounded-3xl overflow-hidden shadow-elegant aspect-[4/5]">
             <img
-              src={berries}
-              alt="Frutos de açaí frescos"
-              width={1024}
-              height={1024}
+              src={lojaFachadaDia}
+              alt="Fachada da loja Açaí Ki-Delícia em Paes Landim durante o dia"
               loading="lazy"
               className="w-full h-full object-cover"
             />
-          </div> 
+          </div>
+          <div className="absolute -bottom-6 -right-6 bg-card px-6 py-5 rounded-2xl shadow-elegant border border-border max-w-[220px]">
+            <div className="font-display text-3xl font-bold text-primary">+5 anos</div>
+            <div className="text-sm text-muted-foreground mt-1">
+              servindo açaí com carinho em Paes Landim.
+            </div>
+          </div>
         </div>
 
         <div className="reveal">

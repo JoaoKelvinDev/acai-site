@@ -13,7 +13,7 @@ const photos = [
   },
   {
     src: lojaFachada,
-    alt: "Fachada da loja durante o dia com mesas externas",
+    alt: "Fachada da loja com mesas externas",
   },
 ];
 
