@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Send, Plus, Minus, Truck, Store } from "lucide-react";
 
-const WHATS_NUMBER = "5589994000014";
+const WHATS_NUMBER = "5589974001661";
 
 const SIZES = [
   { id: "300", label: "Copo 300ml" },

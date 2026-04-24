@@ -52,7 +52,7 @@ export const MenuSection = () => {
             Açaí, cremes e sorvetes <em className="font-medium">vendidos por quilo</em>.
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Explosão de sabor em cada copo. Preço fixo por kg — você leva
+            Explosão de um sabor em cada copo. Preço fixo por kg — você leva
             quanto quiser e monta com os acompanhamentos da casa.
           </p>
         </div>
