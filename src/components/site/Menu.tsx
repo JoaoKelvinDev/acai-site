@@ -52,6 +52,7 @@ const categories: Category[] = [
     ],
   },
   {
+    // Combos 
     id: "combos",
     label: "Combos",
     combos: [
@@ -59,7 +60,7 @@ const categories: Category[] = [
         id: "combo1",
         name: "Combo Tropical",
         desc: "Açaí 700ml + Granola crocante + Leite condensado + Morango. Um combo pronto e delicioso, sem necessidade de escolher!",
-        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='bgGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23fff5e1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23ffe8cc;stop-opacity:1' /%3E%3C/linearGradient%3E%3CradialGradient id='acaiGrad' cx='50%25' cy='30%25' r='60%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%236b21a8;stop-opacity:1' /%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23bgGrad)'/%3E%3Cg id='bowl'%3E%3Cellipse cx='200' cy='150' rx='90' ry='70' fill='url(%23acaiGrad)' opacity='0.9'/%3E%3Cpath d='M 110 150 Q 110 210 200 220 Q 290 210 290 150' fill='%235d3a9b' opacity='0.6'/%3E%3Cpath d='M 130 140 Q 200 120 270 140' stroke='%23fff' stroke-width='2' fill='none' opacity='0.3'/%3E%3C/g%3E%3Cg id='toppings'%3E%3Ccircle cx='160' cy='130' r='12' fill='%23dc2626'/%3E%3Ccircle cx='240' cy='135' r='11' fill='%23ea580c'/%3E%3Ccircle cx='200' cy='125' r='10' fill='%23facc15'/%3E%3Crect x='175' y='145' width='15' height='8' fill='%23b45309' rx='2'/%3E%3Ccircle cx='220' cy='148' r='8' fill='%23ca8a04'/%3E%3C/g%3E%3Cg id='spoon'%3E%3Cpath d='M 310 180 L 330 200 Q 335 205 330 210 Q 320 215 315 210 Z' fill='%23c4b5fd' stroke='%235b21b6' stroke-width='1.5'/%3E%3Cpath d='M 330 200 L 350 220' stroke='%23a78bfa' stroke-width='3' stroke-linecap='round'/%3E%3C/g%3E%3Cg id='leaves'%3E%3Cpath d='M 60 80 Q 50 60 70 50 Q 85 55 80 75 Z' fill='%2316a34a' opacity='0.7'/%3E%3Cpath d='M 330 90 Q 350 70 360 50 Q 365 70 345 85 Z' fill='%2322c55e' opacity='0.7'/%3E%3C/g%3E%3C/svg%3E",
+        image: "src/assets/combos/combo-tropical.png",
         price: "R$ 49,90",
       },
     ],
