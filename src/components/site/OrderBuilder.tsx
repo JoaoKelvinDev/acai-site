@@ -302,7 +302,7 @@ export const OrderBuilder = () => {
       <div className="mt-5">
         <div className="flex items-baseline justify-between">
           <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Cremes</label>
-          <span className="text-[10px] text-muted-foreground">até 2 · {cremes.length}/2</span>
+          <span className="text-[10px] text-muted-foreground">{cremes.length}</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {CREMES.map((c) => (
@@ -315,11 +315,11 @@ export const OrderBuilder = () => {
       <div className="mt-5">
         <div className="flex items-baseline justify-between">
           <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Sorvetes</label>
-          <span className="text-[10px] text-muted-foreground">até 3 · {sorvetes.length}/3</span>
+          <span className="text-[10px] text-muted-foreground">{sorvetes.length}</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {SORVETES.map((s) => (
-            <Chip key={s} active={sorvetes.includes(s)} onClick={() => toggle(sorvetes, setSorvetes, s, 3)}>{s}</Chip>
+            <Chip key={s} active={sorvetes.includes(s)} onClick={() => toggle(sorvetes, setSorvetes, s,)}>{s}</Chip>
           ))}
         </div>
       </div>

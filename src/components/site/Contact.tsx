@@ -63,7 +63,7 @@ export const Contact = () => {
                     rel="noopener noreferrer"
                     className="underline hover:text-accent transition-colors"
                   >
-                    abrir no Google Maps
+                    abrir no Google Maps 👈🏽
                   </a>
                 </div>
               </div>
@@ -86,11 +86,12 @@ export const Contact = () => {
                 </a>
               </div>
             </li>
+
             <li className="flex items-start gap-4">
               <div className="w-11 h-11 rounded-xl bg-primary-foreground/10 grid place-items-center text-accent shrink-0">
                 <Instagram size={20} />
               </div>
-              <div>
+                 <div>
                 <div className="text-sm uppercase tracking-widest text-primary-foreground/60">
                   Instagram
                 </div>
@@ -98,10 +99,20 @@ export const Contact = () => {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium hover:text-accent transition-colors"
+                  className="font-medium hover:text-accent transition-colors inline-block"
                 >
                   @acaikideliciapl
                 </a>
+                <div className="text-sm text-primary-foreground/70">
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-accent transition-colors"
+                  >
+                    abrir no Instagram 👈🏽
+                  </a>
+                </div>
               </div>
             </li>
             <li className="flex items-start gap-4">

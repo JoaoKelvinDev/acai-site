@@ -45,8 +45,8 @@ export const About = () => {
 <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-6"> 
   {[
     { v: "100%", l: "Açaí fresco" },
-    { v: "+20", l: "Opções" }, // Troquei "Complementos" por "Opções" ou ajuste o texto abaixo
-    { v: "Aberto", l: "Horários" },
+    { v: "+20", l: "Complementos" }, // Troquei "Complementos" por "Opções" ou ajuste o texto abaixo
+    { v: "Aberto", l: "Seg-Sáb 14-23h  Dom 15-23h" },
   ].map((s) => (
     <div
       key={s.l}
@@ -57,13 +57,13 @@ export const About = () => {
       </div>
       
       <div className="text-[9px] sm:text-sm text-muted-foreground mt-1 sm:mt-3 font-bold uppercase tracking-tighter sm:tracking-normal leading-tight w-full px-1">
-        {s.v === "Aberto" ? (
+        {s.v === "Seg-Sáb 14-23h  Dom 15-23h" ? (
           <span className="text-[8px] sm:text-xs normal-case font-medium block">
             Seg-Sáb 14-23h <br /> Dom 15-23h
           </span>
         ) : (
           /* Se quiser manter 'Complementos', usamos tracking-tighter para não colar na borda */
-          s.v === "+20" ? "Complemento" : s.l
+          s.v === "+20" ? "Complementos" : s.l
         )}
       </div>
     </div>
