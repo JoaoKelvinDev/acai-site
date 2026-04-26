@@ -62,6 +62,9 @@ export const Footer = () => {
           © {new Date().getFullYear()} Açaí Ki-Delícia PL.
           <br />
           Feito com carinho para a nossa cidade.
+          <br />
+          <br />
+          Desenvolvido por João Kelvin Barbosa Novais
         </div>
       </div>
     </footer>

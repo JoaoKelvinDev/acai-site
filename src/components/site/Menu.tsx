@@ -60,7 +60,7 @@ const categories: Category[] = [
         id: "combo1",
         name: "Combo Tropical",
         desc: "Açaí 700ml + Granola crocante + Leite condensado + Morango. Um combo pronto e delicioso, sem necessidade de escolher!",
-        image: "src/assets/combos/combo-tropical.png",
+        image: "src/assets/combos/combo-tropical.jpg",
         price: "R$ 49,90",
       },
     ],
