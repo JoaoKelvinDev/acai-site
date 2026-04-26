@@ -36,6 +36,7 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
   const [payment, setPayment] = useState<"pix" | "dinheiro" | "cartao">("pix");
   const [change, setChange] = useState("");
   const [notes, setNotes] = useState("");
+  const [cupSize, setCupSize] = useState<"P" | "M" | "G">("M");
 
   if (!combo) return null;
 
@@ -44,6 +45,7 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
 
     const lines = [
       `*Pedido — ${combo.name}* (${combo.price})`,
+      `*Tamanho do copo:* ${cupSize}`,
       ``,
       `*Cliente:* ${name}`,
       `*Telefone:* ${phone}`,
@@ -143,6 +145,34 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
                 <RadioGroupItem id="retirada" value="retirada" />
                 <span className="text-sm font-medium">Retirar na loja</span>
               </label>
+            </RadioGroup>
+          </div>
+
+          <div className="space-y-2">
+            <Label>Tamanho do copo *</Label>
+            <RadioGroup
+              value={cupSize}
+              onValueChange={(v) => setCupSize(v as "P" | "M" | "G")}
+              className="grid grid-cols-3 gap-3"
+            >
+              {[
+                { id: "P", label: "Pequeno (330ml, R$20.00)" },
+                { id: "M", label: "Médio (400ml, R$25.00)" },
+                { id: "G", label: "Grande (500ml, R$30.00)" },
+              ].map((opt) => (
+                <label
+                  key={opt.id}
+                  htmlFor={`cup-${opt.id}`}
+                  className={`flex items-center justify-center gap-2 rounded-xl border p-3 cursor-pointer transition-all ${
+                    cupSize === opt.id
+                      ? "border-accent bg-accent-soft"
+                      : "border-border hover:border-accent/50"
+                  }`}
+                >
+                  <RadioGroupItem id={`cup-${opt.id}`} value={opt.id} />
+                  <span className="text-sm font-medium">{opt.label}</span>
+                </label>
+              ))}
             </RadioGroup>
           </div>
 

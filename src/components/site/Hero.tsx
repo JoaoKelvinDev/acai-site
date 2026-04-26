@@ -64,7 +64,7 @@ export const Hero = () => {
           </span>
 
           <h1 className="mt-6 font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[1.05]">
-            Explosão de um <em className="text-gradient-gold not-italic">sabor</em>
+            Uma Explosão de <em className="text-gradient-gold not-italic">sabor</em>
             <br /> em cada{" "}
             <span className="italic font-medium">copo</span>.
           </h1>

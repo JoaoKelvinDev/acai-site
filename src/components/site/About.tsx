@@ -21,23 +21,14 @@ export const About = () => {
             Sobre nós
           </span>
           <h2 className="mt-3 font-display text-4xl sm:text-5xl font-bold text-primary leading-tight">
-            Uma açaiteria <em className="font-medium">da gente</em>, pra gente daqui.
+            Consagre ao Senhor tudo o que <em className="font-medium">você faz,</em>, e os seus planos serão bem-sucedidos. <span className="text-gradient-gold text-xs sm:text-sm text-muted-foreground font-medium">Provérbios 16:3</span>
           </h2>
 
           <div className="mt-6 space-y-4 text-foreground/80 leading-relaxed">
             <p>
               A <strong>Açaí Ki-Delícia PL</strong> nasceu do sonho simples de
               oferecer um açaí de verdade  cremoso, gelado e do jeitinho que
-              cada cliente gosta  bem aqui em Paes Landim. Começamos pequeno,
-              atendendo amigos e vizinhos, e fomos crescendo pelo boca a boca de
-              quem provou, gostou e voltou.
-            </p>
-            <p>
-              Atendemos cada pedido como se fosse pra alguém da família. Aqui
-              você não é "o próximo da fila"  você é o <em>fulano que gosta de
-              leite condensado a mais</em>, a <em>menina que pede paçoca todo
-              sábado</em>. É essa proximidade que faz da nossa casa um pedacinho
-              da cidade.
+              cada cliente gosta.
             </p>
           </div>
 

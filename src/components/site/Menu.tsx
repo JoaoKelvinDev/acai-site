@@ -58,10 +58,24 @@ const categories: Category[] = [
     combos: [
       {
         id: "combo1",
-        name: "Combo Tropical",
-        desc: "Açaí 700ml + Granola crocante + Leite condensado + Morango. Um combo pronto e delicioso, sem necessidade de escolher!",
-        image: "src/assets/combos/combo-tropical1.jpg",
-        price: "R$ 49,90",
+        name: "Combo Tradicional",
+        desc: "Açaí + Banana + Granola + Leite Condensado",
+        image: "src/assets/public/combos/combo-tradicional.jpg",
+        price: "Escolha o tamanho do copo",
+      },
+      {
+        id: "Combo2",
+        name: "Combo Premium",
+        desc: "Açaí + Leite em Pó + Leite Condensado + Kiwi + Granola",
+        image: "src/assets/public/combos/combo-premium.jpg",
+        price: "Escolha o tamanho do copo",
+      },
+      {
+        id: "Combo3",
+        name: "Combo Top",
+        desc: "Açaí + Morango + Leite em Pó + Paçoca + Nutela",
+        image: "src/assets/public/combos/combo-top.jpg",
+        price: "Escolha o tamanho do copo",
       },
     ],
   },
@@ -89,7 +103,7 @@ export const MenuSection = () => {
             Açaí, cremes e sorvetes <em className="font-medium">vendidos por quilo</em>.
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Explosão de um sabor em cada copo. Preço fixo por kg — você leva
+            Uma Explosão de  sabor em cada copo. Preço fixo por kg você leva
             quanto quiser e monta com os acompanhamentos da casa.
           </p>
         </div>
