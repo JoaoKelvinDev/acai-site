@@ -1,4 +1,4 @@
-Açaí Ki-Delicia | E-commerce Web App
+🍧 Açaí Ki-Delicia | E-commerce Web App
 Solução web moderna desenvolvida para o estabelecimento Açaí Ki-DeliciaPL, focada em proporcionar uma experiência de compra fluida e intuitiva. O projeto utiliza as tecnologias mais recentes do ecossistema Frontend para garantir performance, tipagem segura e manutenibilidade.
 
 🚀 Tecnologias e Ferramentas
