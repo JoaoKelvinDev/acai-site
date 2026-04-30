@@ -10,7 +10,7 @@ const categories: Category[] = [
     id: "principal",
     label: "Cardápio",
     items: [
-      { name: "Açaí, Sorvete & Cremes (kg)", price: "R$ 64,90 / kg" },
+      { name: "Açaí, Sorvete & Cremes (kg)", price: "R$ 66,90 / kg" },
     ],
   },
   {

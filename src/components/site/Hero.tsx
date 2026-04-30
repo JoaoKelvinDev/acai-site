@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import heroImg from "@/assets/hero-acai.jpg";
 import logo from "@/assets/logo-acai-ki-delicia.png";
-import { Clock, ArrowRight, MessageCircle } from "lucide-react";
+import { Clock, ArrowRight, MessageCircle, Truck } from "lucide-react";
 
 export const Hero = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -101,6 +101,16 @@ export const Hero = () => {
               <strong className="text-primary-foreground">14h-23h</strong> · Dom:{" "}
               <strong className="text-primary-foreground">15h-23h</strong>
             </span>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-3 items-start">
+            <div className="flex gap-3 items-start p-4 rounded-lg bg-accent/10 border border-accent/30 backdrop-blur-sm">
+              <Truck size={20} className="text-accent flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-primary-foreground">
+                <p className="font-semibold">Delivery disponível</p>
+                <p className="text-primary-foreground/80 mt-1">Taxa: <strong>R$ 3,00</strong> · A partir das <strong>17h</strong></p>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
-import { Send, Plus, Minus, Truck, Store } from "lucide-react";
+import { Send, Plus, Minus, Truck, Store, AlertCircle } from "lucide-react";
 
 const WHATS_NUMBER = "5589974001661";
+const DELIVERY_FEE = 3.00;
+const DELIVERY_START_HOUR = 17;
 
 const SIZES = [
   { id: "300", label: "Copo 300ml" },
@@ -138,6 +140,7 @@ export const OrderBuilder = () => {
     if (mode === "delivery") {
       lines.push(`\u{1F3E0} *Endereço:* ${address || "(não informado)"}`);
       if (reference) lines.push(`\u{1F4CD} *Ponto de referência:* ${reference}`);
+      lines.push(`\u{1F6A8} *Taxa de Entrega:* R$ ${DELIVERY_FEE.toFixed(2)}`);
     }
     
     lines.push("", "------------------------------", "*\u{1F4D1} Pedido*");
@@ -212,6 +215,15 @@ export const OrderBuilder = () => {
             <Truck size={18} />
             Delivery
           </button>
+        {mode === "delivery" && (
+          <div className="mt-3 flex gap-2 items-start p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg">
+            <AlertCircle size={18} className="text-amber-600 dark:text-amber-500 mt-0.5 flex-shrink-0" />
+            <div className="text-sm text-amber-800 dark:text-amber-200">
+              <p className="font-semibold">Taxa de entrega: R$ {DELIVERY_FEE.toFixed(2)}</p>
+              <p className="text-xs mt-1">Deliveries a partir das {DELIVERY_START_HOUR}h</p>
+            </div>
+          </div>
+        )}
         </div>
       </div>
 
@@ -306,7 +318,7 @@ export const OrderBuilder = () => {
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {CREMES.map((c) => (
-            <Chip key={c} active={cremes.includes(c)} onClick={() => toggle(cremes, setCremes, c, 2)}>{c}</Chip>
+            <Chip key={c} active={cremes.includes(c)} onClick={() => toggle(cremes, setCremes, c,)}>{c}</Chip>
           ))}
         </div>
       </div>
@@ -328,7 +340,7 @@ export const OrderBuilder = () => {
       <div className="mt-5">
         <div className="flex items-baseline justify-between">
           <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Adicionais</label>
-          <span className="text-[10px] text-muted-foreground">{adicionais.length} selecionado(s)</span>
+          <span className="text-[10px] text-muted-foreground">{adicionais.length}</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {ADICIONAIS.map((a) => (

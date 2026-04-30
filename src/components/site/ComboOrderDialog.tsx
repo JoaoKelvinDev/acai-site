@@ -12,8 +12,16 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
-
-const WHATS_NUMBER = "5589974001661";
+import { AlertCircle } from "lucide-react";
+//5589974001661
+const WHATS_NUMBER = "89994000014";
+const DELIVERY_FEE = 3.00;
+const DELIVERY_START_HOUR = 17;
+const SIZE_PRICES: Record<string, number> = {
+  "Pequeno, 330ml": 20.00,
+  "Médio, 400ml": 25.00,
+  "Grande, 500ml": 30.00,
+};
 
 type Combo = {
   name: string;
@@ -43,9 +51,16 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    const sizePrice = SIZE_PRICES[cupSize] || 0;
+    const comboTotal = sizePrice + (mode === "delivery" ? DELIVERY_FEE : 0);
+
     const lines = [
-      `*Pedido — ${combo.name}* (${combo.price})`,
+      `*Pedido — ${combo.name}*`,
+      `*Descrição:* ${combo.desc}`,
+      ``,
       `*Tamanho do copo:* ${cupSize}`,
+      `*Valor do combo:* R$ ${sizePrice.toFixed(2)}`,
+      mode === "delivery" ? `*Total com entrega:* R$ ${comboTotal.toFixed(2)}` : `*Total:* R$ ${comboTotal.toFixed(2)}`,
       ``,
       `*Cliente:* ${name}`,
       `*Telefone:* ${phone}`,
@@ -53,7 +68,7 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
       mode === "delivery"
         ? `*Modalidade:* Delivery 🛵\n*Endereço:* ${address}${
             reference ? `\n*Referência:* ${reference}` : ""
-          }`
+          }\n*Taxa de Entrega:* R$ ${DELIVERY_FEE.toFixed(2)}`
         : `*Modalidade:* Retirada na loja 🏬`,
       ``,
       `*Pagamento:* ${
@@ -146,6 +161,15 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
                 <span className="text-sm font-medium">Retirar na loja</span>
               </label>
             </RadioGroup>
+            {mode === "delivery" && (
+              <div className="mt-3 flex gap-2 items-start p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-lg">
+                <AlertCircle size={18} className="text-amber-600 dark:text-amber-500 mt-0.5 flex-shrink-0" />
+                <div className="text-sm text-amber-800 dark:text-amber-200">
+                  <p className="font-semibold">Taxa de entrega: R$ {DELIVERY_FEE.toFixed(2)}</p>
+                  <p className="text-xs mt-1">Deliveries a partir das {DELIVERY_START_HOUR}h</p>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -156,9 +180,9 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
               className="grid grid-cols-3 gap-3"
             >
               {[
-                { id: "P", label: "Pequeno (330ml, R$20.00)" },
-                { id: "M", label: "Médio (400ml, R$25.00)" },
-                { id: "G", label: "Grande (500ml, R$30.00)" },
+                { id: "Pequeno, 330ml", label: "Pequeno (330ml, R$20.00)" },
+                { id: "Médio, 400ml", label: "Médio (400ml, R$25.00)" },
+                { id: "Grande, 500ml", label: "Grande (500ml, R$30.00)" },
               ].map((opt) => (
                 <label
                   key={opt.id}
