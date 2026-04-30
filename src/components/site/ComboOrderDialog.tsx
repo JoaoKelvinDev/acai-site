@@ -13,14 +13,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { AlertCircle } from "lucide-react";
-//5589974001661
-const WHATS_NUMBER = "89994000014";
+//
+const WHATS_NUMBER = "5589974001661";
 const DELIVERY_FEE = 3.00;
 const DELIVERY_START_HOUR = 17;
 const SIZE_PRICES: Record<string, number> = {
-  "Pequeno, 330ml": 20.00,
-  "Médio, 400ml": 25.00,
-  "Grande, 500ml": 30.00,
+  "Pequeno, 330ml": 19.90,
+  "Médio, 400ml": 24.90,
+  "Grande, 500ml": 29.90,
 };
 
 type Combo = {
@@ -180,9 +180,9 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
               className="grid grid-cols-3 gap-3"
             >
               {[
-                { id: "Pequeno, 330ml", label: "Pequeno (330ml, R$20.00)" },
-                { id: "Médio, 400ml", label: "Médio (400ml, R$25.00)" },
-                { id: "Grande, 500ml", label: "Grande (500ml, R$30.00)" },
+                { id: "Pequeno, 330ml", label: " (330ml, R$19.90)" },
+                { id: "Médio, 400ml", label: " (400ml, R$24.90)" },
+                { id: "Grande, 500ml", label: "(500ml, R$29.90)" },
               ].map((opt) => (
                 <label
                   key={opt.id}
