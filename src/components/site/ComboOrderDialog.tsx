@@ -27,6 +27,8 @@ type Combo = {
   name: string;
   price: string;
   desc: string;
+  cupSize?: string;
+  ml?: number;
 };
 
 type Props = {
@@ -44,22 +46,21 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
   const [payment, setPayment] = useState<"pix" | "dinheiro" | "cartao">("pix");
   const [change, setChange] = useState("");
   const [notes, setNotes] = useState("");
-  const [cupSize, setCupSize] = useState<"P" | "M" | "G">("M");
 
   if (!combo) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const sizePrice = SIZE_PRICES[cupSize] || 0;
-    const comboTotal = sizePrice + (mode === "delivery" ? DELIVERY_FEE : 0);
+    const comboPrice = parseFloat(combo!.price.replace("R$ ", "").replace(",", "."));
+    const comboTotal = comboPrice + (mode === "delivery" ? DELIVERY_FEE : 0);
 
     const lines = [
       `*Pedido — ${combo.name}*`,
       `*Descrição:* ${combo.desc}`,
       ``,
-      `*Tamanho do copo:* ${cupSize}`,
-      `*Valor do combo:* R$ ${sizePrice.toFixed(2)}`,
+      `*Tamanho do copo:* ${combo.ml}ml`,
+      `*Valor do combo:* R$ ${comboPrice.toFixed(2)}`,
       mode === "delivery" ? `*Total com entrega:* R$ ${comboTotal.toFixed(2)}` : `*Total:* R$ ${comboTotal.toFixed(2)}`,
       ``,
       `*Cliente:* ${name}`,
@@ -173,31 +174,10 @@ export const ComboOrderDialog = ({ combo, open, onOpenChange }: Props) => {
           </div>
 
           <div className="space-y-2">
-            <Label>Tamanho do copo *</Label>
-            <RadioGroup
-              value={cupSize}
-              onValueChange={(v) => setCupSize(v as "P" | "M" | "G")}
-              className="grid grid-cols-3 gap-3"
-            >
-              {[
-                { id: "Pequeno, 330ml", label: " (330ml, R$19.90)" },
-                { id: "Médio, 400ml", label: " (400ml, R$24.90)" },
-                { id: "Grande, 500ml", label: "(500ml, R$29.90)" },
-              ].map((opt) => (
-                <label
-                  key={opt.id}
-                  htmlFor={`cup-${opt.id}`}
-                  className={`flex items-center justify-center gap-2 rounded-xl border p-3 cursor-pointer transition-all ${
-                    cupSize === opt.id
-                      ? "border-accent bg-accent-soft"
-                      : "border-border hover:border-accent/50"
-                  }`}
-                >
-                  <RadioGroupItem id={`cup-${opt.id}`} value={opt.id} />
-                  <span className="text-sm font-medium">{opt.label}</span>
-                </label>
-              ))}
-            </RadioGroup>
+            <Label className="text-sm">Tamanho do copo</Label>
+            <div className="px-4 py-3 bg-accent/10 rounded-xl border border-accent/20">
+              <p className="text-sm font-medium text-foreground">{combo.ml}ml</p>
+            </div>
           </div>
 
           {mode === "delivery" && (

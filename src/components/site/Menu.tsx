@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ComboOrderDialog } from "./ComboOrderDialog";
 
 type Item = { name: string; price: string };
-type Combo = { id: string; name: string; desc: string; image?: string; price: string };
+type Combo = { id: string; name: string; desc: string; image?: string; price: string; cupSize?: string; ml?: number };
 type Category = { id: string; label: string; items?: Item[]; combos?: Combo[] };
 
 const categories: Category[] = [
@@ -58,24 +58,30 @@ const categories: Category[] = [
     combos: [
       {
         id: "combo1",
-        name: "Combo Tradicional",
+        name: "Combo Tradicional. 300 ml",
         desc: "Açaí + Banana + Granola + Leite Condensado",
         image: "/combo-tradicional.jpg",
-        price: "Escolha o tamanho do copo",
+        price: "R$ 19,90",
+        cupSize: "P",
+        ml: 300,
       },
       {
         id: "Combo2",
-        name: "Combo Premium",
+        name: "Combo Premium. 400 ml",
         desc: "Açaí + Leite em Pó + Leite Condensado + Kiwi + Granola",
         image: "/combo-premium.jpg",
-        price: "Escolha o tamanho do copo",
+        price: "R$ 24,90",
+        cupSize: "M",
+        ml: 400,
       },
       {
         id: "Combo3",
-        name: "Combo Top",
+        name: "Combo Top. 500 ml",
         desc: "Açaí + Morango + Leite em Pó + Paçoca + Nutela",
         image: "/combo-top.jpg",
-        price: "Escolha o tamanho do copo",
+        price: "R$ 29,90",
+        cupSize: "G",
+        ml: 500,
       },
     ],
   },
