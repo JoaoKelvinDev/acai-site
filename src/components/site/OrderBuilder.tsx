@@ -99,7 +99,7 @@ export const OrderBuilder = () => {
   const [address, setAddress] = useState("");
   const [reference, setReference] = useState("");
   const [size, setSize] = useState(SIZES[2].id);
-  const [base, setBase] = useState<string>(BASES[0]);
+  const [base, setBase] = useState<string>("");
   const [cremes, setCremes] = useState<string[]>([]);
   const [sorvetes, setSorvetes] = useState<string[]>([]);
   const [adicionais, setAdicionais] = useState<string[]>([]);
@@ -146,7 +146,7 @@ export const OrderBuilder = () => {
     lines.push("", "------------------------------", "*\u{1F4D1} Pedido*");
     lines.push(`• Quantidade: ${qty}x`);
     lines.push(`• Tamanho: ${sizeLabel}`);
-    lines.push(`• Base: ${base}`);
+    if (base) lines.push(`• Base: ${base}`);
     if (cremes.length) lines.push(`• Cremes: ${cremes.join(", ")}`);
     if (sorvetes.length) lines.push(`• Sorvetes: ${sorvetes.join(", ")}`);
     if (adicionais.length) lines.push(`• Adicionais: ${adicionais.join(", ")}`);
@@ -249,10 +249,10 @@ export const OrderBuilder = () => {
           <input
             required
             type="tel"
-            maxLength={20}
+            maxLength={11}
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="(89) 9 0000-0000"
+            onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+            placeholder="89 0000-0000"
             className="mt-1.5 w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 transition"
           />
         </div>
@@ -305,7 +305,7 @@ export const OrderBuilder = () => {
         <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Base</label>
         <div className="mt-2 flex flex-wrap gap-2">
           {BASES.map((b) => (
-            <Chip key={b} active={base === b} onClick={() => setBase(b)}>{b}</Chip>
+            <Chip key={b} active={base === b} onClick={() => setBase(base === b ? "" : b)}>{b}</Chip>
           ))}
         </div>
       </div>
