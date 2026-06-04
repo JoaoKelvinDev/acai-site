@@ -9,7 +9,6 @@ const SIZES = [
   { id: "300", label: "Copo 300ml" },
   { id: "400", label: "Copo 400ml" },
   { id: "500", label: "Copo 500ml" },
-  { id: "kg", label: "Por kg (montado na hora)" },
 ];
 
 const BASES = ["Açaí Tradicional", "Açaí Zero"];
