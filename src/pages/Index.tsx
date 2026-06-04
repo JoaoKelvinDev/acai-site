@@ -9,7 +9,7 @@ import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 import { useReveal } from "@/hooks/useReveal";
-
+import { OrderBuilder } from "@/components/site/OrderBuilder";
 const Index = () => {
   useReveal();
 
@@ -74,16 +74,21 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main>
-        <Hero />
-        <Highlights />
-        <MenuSection />
-        <Gallery />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-      <WhatsAppFab />
+   <main>
+  <Hero />
+  <Gallery />
+    <About />
+  <MenuSection />
+
+
+  <section id="gerar-seu-pedido" className="py-24 bg-background scroll-mt-20">
+    <div className="container">
+      <OrderBuilder />
+    </div>
+  </section>
+  <Contact />
+  <Footer />
+</main>
     </div>
   );
 };

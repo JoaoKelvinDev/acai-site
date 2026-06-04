@@ -64,7 +64,16 @@ export const Footer = () => {
           Feito com carinho para a nossa cidade.
           <br />
           <br />
-          Desenvolvido por João Kelvin Barbosa Novais
+        
+          Desenvolvido por{" "}
+          <a
+            href="https://www.linkedin.com/in/joaokelvindev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-foreground hover:text-accent transition-colors font-semibold"
+          >
+            João Kelvin Barbosa Novais
+          </a>
         </div>
       </div>
     </footer>

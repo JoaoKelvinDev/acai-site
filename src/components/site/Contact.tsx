@@ -1,6 +1,5 @@
 import { MapPin, Phone, Clock, MessageCircle, Instagram } from "lucide-react";
-import { OrderBuilder } from "./OrderBuilder";
-import {  Star } from "lucide-react"; // Adicione o Star aqui
+import { Star } from "lucide-react";
 
 const WHATS_NUMBER = "5589974001661";
 const WHATS_DEFAULT_MSG = "Olá! Vi o site e gostaria de mais informações.";
@@ -162,7 +161,7 @@ export const Contact = () => {
         </div>
 
         {/* Order builder */}
-        <OrderBuilder />
+
       </div>
     </section>
   );

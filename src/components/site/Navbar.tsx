@@ -6,8 +6,8 @@ const INSTAGRAM_URL = "https://www.instagram.com/acaikideliciapl/";
 
 const links = [
   { href: "#inicio", label: "Início" },
-  { href: "#cardapio", label: "Cardápio" },
   { href: "#galeria", label: "Galeria" },
+  { href: "#cardapio", label: "Cardápio" },
   { href: "#sobre", label: "Sobre" },
   { href: "#contato", label: "Contato" },
 ];
@@ -69,12 +69,6 @@ export const Navbar = () => {
           >
             <Instagram size={20} />
           </a>
-          <a
-            href="#contato"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary-glow transition-colors shadow-soft"
-          >
-            Peça já
-          </a>
         </div>
 
         <button
@@ -100,13 +94,6 @@ export const Navbar = () => {
                 </a>
               </li>
             ))}
-            <a
-              href="#contato"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex justify-center items-center px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold"
-            >
-              Peça já
-            </a>
             <a
               href={INSTAGRAM_URL}
               target="_blank"

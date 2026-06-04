@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ComboOrderDialog } from "./ComboOrderDialog";
 
-type Item = { name: string; price: string };
+type Item = { name: string; price?: string };
 type Combo = { id: string; name: string; desc: string; image?: string; price: string; cupSize?: string; ml?: number };
 type Category = { id: string; label: string; items?: Item[]; combos?: Combo[] };
 
@@ -11,6 +11,28 @@ const categories: Category[] = [
     label: "Cardápio",
     items: [
       { name: "Açaí, Sorvete & Cremes (kg)", price: "R$ 66,90 / kg" },
+      { name: "Açai Tradicional" },
+      { name: "Açai Zero" },
+      { name: "Creme de Ninho" },
+      { name: "Creme de Nutela" },  
+      { name: "Creme de Maracujá" },
+      { name: "Creme de Cupuaçu " },
+      { name: "Creme de Oreo"},
+      { name: "Sorvete de Abacaxi" },
+      { name: "Sorvete de Babalu" },
+      { name: "Sorvete de Chocolate Belga" },
+      { name: "Sorvete de Côco" },
+      { name: "Sorvete de Flocos" },
+      { name: "Sorvete de Iogurte/Morango" },
+      { name: "Sorvete de BomBom Ferreiro" },
+      { name: "Sorvete de Doce de Leite" },
+      { name: "Sorvete de Morango" },
+      { name: "Sorvete de Prestigio" },
+      { name: "Sorvete de Tapioca" },
+      { name: "Sorvete de Terremoto" },
+      { name: "Sorvete de Lacta" },
+      { name: "Sorvete de Menta" },
+      { name: "Sorvete de Cookies  " },
     ],
   },
   {
@@ -41,7 +63,8 @@ const categories: Category[] = [
       { name: "Kiwi", price: "Sob consulta" },
       { name: "Morango", price: "Sob consulta" },
       { name: "Banana", price: "Sob consulta" },
-      { name: "Uva", price: "Sob consulta" },
+      { name: "Mel", price: "Sob consulta" },
+
     ],
   },
   {
@@ -66,7 +89,7 @@ const categories: Category[] = [
         ml: 300,
       },
       {
-        id: "Combo2",
+        id: "combo2",
         name: "Combo Premium. 400 ml",
         desc: "Açaí + Leite em Pó + Leite Condensado + Kiwi + Granola",
         image: "/combo-premium.jpg",
@@ -99,7 +122,7 @@ export const MenuSection = () => {
   };
 
   return (
-    <section id="cardapio" className="py-24 sm:py-32 bg-gradient-cream">
+    <section id="cardapio" className="py-24 sm:py-32 bg-gradient-cream scroll-mt-20">
       <div className="container">
         <div className="reveal max-w-2xl">
           <span className="text-xs tracking-[0.3em] uppercase text-accent font-semibold">
@@ -145,9 +168,11 @@ export const MenuSection = () => {
             {item.name}
           </h3>
         </div>
-        <span className="shrink-0 px-2 py-0.5 rounded-full border border-accent/40 text-accent font-semibold text-xs sm:text-sm whitespace-nowrap bg-accent/5">
-  {item.price}
-</span>
+        {item.price && (
+          <span className="shrink-0 px-1 py-0.5 rounded-full border border-accent/40 text-accent font-semibold text-[0.65rem] whitespace-nowrap bg-accent/5">
+            {item.price}
+          </span>
+        )}
       </div>
       <div className="absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent v  ia-accent/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
     </article>

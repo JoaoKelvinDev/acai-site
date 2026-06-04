@@ -76,10 +76,10 @@ export const Hero = () => {
 
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href="#cardapio"
+              href="#gerar-seu-pedido"
               className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-gold text-accent-foreground font-semibold shadow-gold hover:scale-[1.03] transition-transform"
             >
-              Ver cardápio
+              Gere seu pedido
               <ArrowRight
                 size={18}
                 className="group-hover:translate-x-1 transition-transform"
@@ -94,18 +94,12 @@ export const Hero = () => {
             </a>
           </div>
 
-          <div className="mt-10 inline-flex items-center gap-3 text-sm text-primary-foreground/80">
-            <Clock size={18} className="text-accent" />
-            <span>
-              Seg-Sáb:{" "}
-              <strong className="text-primary-foreground">14h-23h</strong> · Dom:{" "}
-              <strong className="text-primary-foreground">15h-23h</strong>
-            </span>
-          </div>
+
 
           <div className="mt-6 flex flex-col gap-3 items-start">
             <div className="flex gap-3 items-start p-4 rounded-lg bg-accent/10 border border-accent/30 backdrop-blur-sm">
               <Truck size={20} className="text-accent flex-shrink-0 mt-0.5" />
+              
               <div className="text-sm text-primary-foreground">
                 <p className="font-semibold">Delivery disponível</p>
                 <p className="text-primary-foreground/80 mt-1">Taxa: <strong>R$ 3,00</strong> · A partir das <strong>17h</strong></p>

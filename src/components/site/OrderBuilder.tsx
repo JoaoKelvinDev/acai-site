@@ -37,6 +37,8 @@ const SORVETES = [
   "Morango",
   "Prestígio",
   "Terremoto",
+  "Tapioca",
+  "Cookies",
 ];
 
 const ADICIONAIS = [
@@ -57,6 +59,7 @@ const ADICIONAIS = [
   "Leite em Pó",
   "Marshmallow",
   "Nutela",
+  "Leitinho",
   "Paçoca",
   "Flocos de Cereais",
   "Côco Ralado",
@@ -64,7 +67,7 @@ const ADICIONAIS = [
   "Kiwi",
   "Morango",
   "Banana",
-  "Uva",
+  "Mel"
 ];
 
 type Mode = "retirada" | "delivery";

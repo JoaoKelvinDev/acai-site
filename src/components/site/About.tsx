@@ -1,65 +1,17 @@
-import lojaFachadaDia from "@/assets/loja-fachada-dia.jpg";
 
 export const About = () => {
   return (
-    <section id="sobre" className="py-24 sm:py-32 bg-background">
-      <div className="container grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="sobre" className="py-8 sm:py-12 bg-background scroll-mt-20">
+      <div className="container grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
         <div className="reveal relative">
           <div className="absolute -inset-4 bg-gradient-gold opacity-20 blur-2xl rounded-3xl" />
-          <div className="relative rounded-3xl overflow-hidden shadow-elegant aspect-[4/5]">
-            <img
-              src={lojaFachadaDia}
-              alt="Fachada da loja Açaí Ki-Delícia em Paes Landim durante o dia"
-              loading="lazy"
-              className="w-full h-full object-cover"
-            />
-          </div>
         </div>
         
         <div className="reveal">
-          <span className="text-xs tracking-[0.3em] uppercase text-accent font-semibold">
-            Sobre nós
-          </span>
-          <h2 className="mt-3 font-display text-4xl sm:text-5xl font-bold text-primary leading-tight">
-            Consagre ao Senhor tudo o que <em className="font-medium">você faz,</em>, e os seus planos serão bem-sucedidos. <span className="text-gradient-gold text-xs sm:text-sm text-muted-foreground font-medium">Provérbios 16:3</span>
+
+          <h2 className="mt-2 font-display text-lg sm:text-2xl font-bold text-primary leading-tight">
+            Consagre ao Senhor tudo o que <em className="font-medium">você faz,</em>, e os seus planos serão bem-sucedidos. <span className="text-gradient-gold text-xs text-muted-foreground font-medium">Provérbios 16:3</span>
           </h2>
-
-          <div className="mt-6 space-y-4 text-foreground/80 leading-relaxed">
-            <p>
-              A <strong>Açaí Ki-Delícia PL</strong> nasceu do sonho simples de
-              oferecer um açaí de verdade  cremoso, gelado e do jeitinho que
-              cada cliente gosta.
-            </p>
-          </div>
-
-          {/* Cards Quadradinhos - Fontes Maiores */}
-<div className="mt-8 grid grid-cols-3 gap-2 sm:gap-6"> 
-  {[
-    { v: "100%", l: "Açaí fresco" },
-    { v: "+20", l: "Complementos" }, // Troquei "Complementos" por "Opções" ou ajuste o texto abaixo
-    { v: "Aberto", l: "Seg-Sáb 14-23h  Dom 15-23h" },
-  ].map((s) => (
-    <div
-      key={s.l}
-      className="flex flex-col items-center justify-center text-center p-1 sm:p-5 rounded-2xl sm:rounded-3xl bg-secondary border border-border aspect-square shadow-sm transition-transform hover:scale-105 overflow-hidden"
-    >
-      <div className="font-display text-xl sm:text-5xl lg:text-6xl font-extrabold text-primary italic leading-none">
-        {s.v}
-      </div>
-      
-      <div className="text-[9px] sm:text-sm text-muted-foreground mt-1 sm:mt-3 font-bold uppercase tracking-tighter sm:tracking-normal leading-tight w-full px-1">
-        {s.v === "Seg-Sáb 14-23h  Dom 15-23h" ? (
-          <span className="text-[8px] sm:text-xs normal-case font-medium block">
-            Seg-Sáb 14-23h <br /> Dom 15-23h
-          </span>
-        ) : (
-          /* Se quiser manter 'Complementos', usamos tracking-tighter para não colar na borda */
-          s.v === "+20" ? "Complementos" : s.l
-        )}
-      </div>
-    </div>
-  ))}
-</div>
         </div>
       </div>
     </section>

@@ -5,15 +5,15 @@ import lojaFachadaNoite from "@/assets/loja-fachada-noite.jpg";
 const photos = [
   {
     src: lojaFachadaNoite,
-    alt: "Fachada da Açaí Ki-Delícia iluminada à noite",
+    alt: "Fachada da Açaí Ki-Delícia de dia, um convite irresistível para saborear um açaí cremoso e refrescante",
   },
   {
     src: lojaInterior,
-    alt: "Interior da loja com balcão de acompanhamentos",
+    alt: "Interior da Açaí Ki-Delícia, um ambiente aconchegante para curtir seu açaí",
   },
   {
     src: lojaFachada,
-    alt: "Fachada da loja com mesas externas",
+    alt: "Tudo começa Aqui... Monte do jeitinho que você gosta na Açaí Ki-Delícia",
   },
 ];
 
