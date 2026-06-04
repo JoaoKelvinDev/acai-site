@@ -362,6 +362,13 @@ export const OrderBuilder = () => {
             </Chip>
           ))}
         </div>
+        {(payment === "Pix" || payment === "Cartão") && (
+          <div className="mt-3 p-3 bg-foreground/5 border border-foreground/20 rounded-lg">
+            <p className="text-xs text-foreground font-semibold">
+              Levamos a maquinhinha até você
+            </p>
+          </div>
+        )}
         {payment === "Dinheiro" && (
           <input
             type="text"
