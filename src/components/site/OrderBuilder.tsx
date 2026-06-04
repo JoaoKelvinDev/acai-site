@@ -37,7 +37,6 @@ const SORVETES = [
   "Prestígio",
   "Terremoto",
   "Tapioca",
-  "Cookies",
 ];
 
 const ADICIONAIS = [
