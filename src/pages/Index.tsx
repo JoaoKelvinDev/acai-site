@@ -16,7 +16,7 @@ const Index = () => {
   useEffect(() => {
     document.title = "Açaí Ki-Delícia PL — Açaiteria em Paes Landim, PI";
     const desc =
-      "Açaí, cremes e sorvetes em Paes Landim - PI. Seg a Sáb 14h às 23h, Domingo 15h às 23h. Rua Licinha Moraes, 20. Peça pelo WhatsApp (89) 97400-1661.";
+      "Açaí, cremes e sorvetes em Paes Landim - PI. Funcionamos todos os dias das 15h às 23h, com delivery das 15h às 22h. Rua Licinha Moraes, 20. Peça pelo WhatsApp (89) 97400-1661.";
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
@@ -56,13 +56,7 @@ const Index = () => {
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          opens: "14:00",
-          closes: "23:00",
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: "Sunday",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
           opens: "15:00",
           closes: "23:00",
         },

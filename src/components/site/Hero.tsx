@@ -9,22 +9,9 @@ export const Hero = () => {
   useEffect(() => {
     const checkStatus = () => {
       const now = new Date();
-      const day = now.getDay();
       const hour = now.getHours();
 
-      // day: 0 = domingo, 1 = segunda, ..., 6 = sábado
-      const isSunday = day === 0;
-      const isWeekday = day >= 1 && day <= 6;
-
-      let open = false;
-
-      if (isWeekday) {
-        // Segunda a sábado: 14h às 23h
-        open = hour >= 14 && hour < 23;
-      } else if (isSunday) {
-        // Domingo: 15h às 23h
-        open = hour >= 15 && hour < 23;
-      }
+      const open = hour >= 15 && hour < 23;
 
       setIsOpen(open);
     };
@@ -71,7 +58,7 @@ export const Hero = () => {
 
           <p className="mt-6 max-w-xl text-base sm:text-lg text-primary-foreground/85 leading-relaxed">
             Açaí, cremes, sorvetes e acompanhamentos vendidos por quilo
-            cremosos, geladinhos e do seu jeito. Segunda a sábado das 14h às 23h, domingos das 15h às 23h.
+            cremosos, geladinhos e do seu jeito. Funcionamos todos os dias das 15h às 23h.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -102,7 +89,7 @@ export const Hero = () => {
               
               <div className="text-sm text-primary-foreground">
                 <p className="font-semibold">Delivery disponível</p>
-                <p className="text-primary-foreground/80 mt-1">Taxa: <strong>R$ 3,00</strong> · A partir das <strong>17h</strong></p>
+                <p className="text-primary-foreground/80 mt-1">Taxa: <strong>R$ 3,00</strong> · Das <strong>15h às 22h</strong></p>
               </div>
             </div>
           </div>

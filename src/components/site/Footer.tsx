@@ -65,14 +65,15 @@ export const Footer = () => {
           <br />
           <br />
         
-          Desenvolvido por{" "}
+          Desenvolvimento por{" "}
           <a
             href="https://www.linkedin.com/in/joaokelvindev/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary-foreground hover:text-accent transition-colors font-semibold"
           >
-            João Kelvin Barbosa Novais
+            João Kelvin Barbosa Novais | 
+            Soluções Web & Sistemas
           </a>
         </div>
       </div>

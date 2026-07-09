@@ -122,8 +122,8 @@ export const Contact = () => {
                 <div className="text-sm uppercase tracking-widest text-primary-foreground/60">
                   Horário de funcionamento
                 </div>
-                <div className="font-medium">Segunda a sábado · 14h às 23h</div>
-                <div className="font-medium">Domingo · 15h às 23h</div>
+                <div className="font-medium">Todos os dias · 15h às 23h</div>
+                <div className="font-medium">Delivery · 15h às 22h</div>
               </div>
             </li>
           </ul>

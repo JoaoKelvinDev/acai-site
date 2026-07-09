@@ -3,7 +3,7 @@ import { Send, Plus, Minus, Truck, Store, AlertCircle } from "lucide-react";
 
 const WHATS_NUMBER = "5589974001661";
 const DELIVERY_FEE = 3.00;
-const DELIVERY_START_HOUR = 17;
+const DELIVERY_START_HOUR = 15;
 
 const SIZES = [
   { id: "300", label: "Copo 300ml" },
@@ -220,7 +220,7 @@ export const OrderBuilder = () => {
             <AlertCircle size={18} className="text-amber-600 dark:text-amber-500 mt-0.5 flex-shrink-0" />
             <div className="text-sm text-amber-800 dark:text-amber-200">
               <p className="font-semibold">Taxa de entrega: R$ {DELIVERY_FEE.toFixed(2)}</p>
-              <p className="text-xs mt-1">Deliveries a partir das {DELIVERY_START_HOUR}h</p>
+              <p className="text-xs mt-1">Delivery das {DELIVERY_START_HOUR}h às 22h</p>
             </div>
           </div>
         )}
