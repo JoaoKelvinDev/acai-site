@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ComboOrderDialog } from "./ComboOrderDialog";
 
 type Item = { name: string; price?: string };
@@ -115,6 +115,13 @@ export const MenuSection = () => {
   const [selectedCombo, setSelectedCombo] = useState<Combo | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const current = categories.find((c) => c.id === active)!;
+  const combosCategory = categories.find((c) => c.id === "combos");
+
+  useEffect(() => {
+    if (active === "combos") {
+      setActive("principal");
+    }
+  }, [active]);
 
   const openCombo = (combo: Combo) => {
     setSelectedCombo(combo);
@@ -139,19 +146,21 @@ export const MenuSection = () => {
 
         {/* Tabs */}
         <div className="reveal mt-10 flex flex-wrap gap-2 sm:gap-3">
-          {categories.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => setActive(c.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
-                active === c.id
-                  ? "bg-primary text-primary-foreground shadow-soft"
-                  : "bg-card text-foreground/70 hover:bg-secondary border border-border"
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
+          {categories
+            .filter((c) => c.id !== "combos")
+            .map((c) => (
+              <button
+                key={c.id}
+                onClick={() => setActive(c.id)}
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+                  active === c.id
+                    ? "bg-primary text-primary-foreground shadow-soft"
+                    : "bg-card text-foreground/70 hover:bg-secondary border border-border"
+                }`}
+              >
+                {c.label}
+              </button>
+            ))}
         </div>
 
         {/* Items */}
@@ -179,9 +188,9 @@ export const MenuSection = () => {
   ))}
 </div>
 
-        {current.combos && (
+        {(current.combos || (active === "principal" && combosCategory?.combos)) && (
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {current.combos.map((combo) => (
+            {(current.combos ?? (active === "principal" ? combosCategory?.combos : undefined))?.map((combo) => (
               <article
                 key={combo.name}
                 className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-accent/60 hover:shadow-elegant transition-all"
